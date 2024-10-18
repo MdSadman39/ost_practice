@@ -1,108 +1,120 @@
+
+//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-// Image(asset, network), Column, Row
-
-void main() {
+void main()
+{
   runApp(HelloWorldApp());
 }
-
-class HelloWorldApp extends StatelessWidget {
+class HelloWorldApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       title: 'Hello World App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Home'),
-          centerTitle: true,
-        ),
-        // body: Image.asset(
-        //   'assets/images/shoe.jpg',
-        //   width: 300,
-        //   height: 400,
-        //   fit: BoxFit.scaleDown,
-        //   // color: Colors.red.shade50,
-        //   alignment: Alignment.bottomCenter,
-        // ),
-        // body: Image.network(
-        //   'https://t3.ftcdn.net/jpg/06/12/00/18/360_F_612001823_TkzT0xmIgagoDCyQ0yuJYEGu8j6VNVYT.jpg',
-        //   width: 200,
-        //   height: 300,
-        //   fit: BoxFit.cover,
-        // ),
-        /*body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          mainAxisSize: MainAxisSize.min,
+      home: Home(),
+    );
+  }
+}
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home'),
+        centerTitle: true,
+        backgroundColor: Colors.green,
+      ),
+      body: Center(
+        child: Column(
           children: [
-            Text('Hello'),
-            Text('World'),
-            Image.network(
-              'https://t3.ftcdn.net/jpg/06/12/00/18/360_F_612001823_TkzT0xmIgagoDCyQ0yuJYEGu8j6VNVYT.jpg',
-              width: 350,
-              height: 300,
-              fit: BoxFit.cover,
+            SizedBox(height: 70,),
+            ElevatedButton(
+              onPressed: () { 
+                showModalBottomSheet(
+                 // barrierColor: Colors.amber,
+                  //backgroundColor: Colors.brown,
+                    context: context,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16)
+                    ),
+                    isScrollControlled: false,
+                   // useSafeArea: true,
+                    enableDrag: false,
+                    builder: (ctx){
+                  return Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 24),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Title',style: TextStyle(fontSize: 24),),
+                          ],
+                        ),
+                      ),
+                      Divider(
+                        height: 16,
+                        thickness: 2,
+                      ),
+                      Text('Sample'),
+                      Row(
+                        children: [
+                          ElevatedButton(onPressed: () {  },
+                          child: Text('Cancel'),),
+                          ElevatedButton(onPressed: () {  },
+                            child: Text('Save'),),
+                        ],
+                      ),
+                    ],
+                  );
+                });
+              },
+              child: Text('Show Dialog'),
             ),
-            Text('This is a shoe image'),
-            Text('sjfdkk'),
-          ],
-        ),*/
-        /*body: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text('Hello'),
-            Text('Another'),
-            Text('World'),
-            Image.network(
-              'https://t3.ftcdn.net/jpg/06/12/00/18/360_F_612001823_TkzT0xmIgagoDCyQ0yuJYEGu8j6VNVYT.jpg',
-              width: 100,
-              fit: BoxFit.cover,
-            ),
-            Text('Shoe')
-          ],
-        ),*/
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Hello world'),
-            Row(
-              children: [
-                Text('Hello'),
-                Text('World'),
-                Image.network(
-                  'https://t3.ftcdn.net/jpg/06/12/00/18/360_F_612001823_TkzT0xmIgagoDCyQ0yuJYEGu8j6VNVYT.jpg',
-                  width: 100,
-                  fit: BoxFit.cover,
+            // textfield
+            SizedBox(height: 24,),
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: TextField(
+                maxLength: 50,
+                onChanged:(String?value){
+                  print(value);
+                },
+                //controller: TextEditingController(),
+                maxLines: 1,
+                keyboardType: TextInputType.phone,
+                decoration: InputDecoration(
+                  hintText: 'Phone',
+                  hintStyle: TextStyle(
+                      fontWeight: FontWeight.w400 ,
+                      color: Colors.grey.shade400,
+                  ),
+                  labelText: 'Phone Number',
+                  prefixIcon: Icon(Icons.phone),
+                  suffixIcon: Icon(Icons.person),
+                  fillColor: Colors.white24,
+                  filled: true,
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.red),),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.red),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.green,width: 2),
+                  )
                 ),
-                Text('This is a shoe image'),
-                Text('sjfdkk'),
-              ],
+
+
+              ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Image.network(
-                  'https://t3.ftcdn.net/jpg/06/12/00/18/360_F_612001823_TkzT0xmIgagoDCyQ0yuJYEGu8j6VNVYT.jpg',
-                  width: 100,
-                  fit: BoxFit.cover,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text('This'),
-                    Text('is'),
-                    Text('Nike new version'),
-                  ],
-                )
-              ],
-            )
+
           ],
         ),
       ),
     );
   }
 }
+
