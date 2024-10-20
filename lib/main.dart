@@ -1,5 +1,4 @@
-
-//import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main()
@@ -11,7 +10,6 @@ class HelloWorldApp extends StatelessWidget{
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Hello World App',
       home: Home(),
     );
   }
@@ -23,98 +21,140 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor:Colors.green,
         title: Text('Home'),
         centerTitle: true,
-        backgroundColor: Colors.green,
       ),
-      body: Center(
+      //drawer..................................................................
+      drawer: Drawer(
+         width: 300,
+        backgroundColor: Colors.white54,
         child: Column(
           children: [
-            SizedBox(height: 70,),
-            ElevatedButton(
-              onPressed: () { 
-                showModalBottomSheet(
-                 // barrierColor: Colors.amber,
-                  //backgroundColor: Colors.brown,
-                    context: context,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16)
-                    ),
-                    isScrollControlled: false,
-                   // useSafeArea: true,
-                    enableDrag: false,
-                    builder: (ctx){
-                  return Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 24),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('Title',style: TextStyle(fontSize: 24),),
-                          ],
-                        ),
-                      ),
-                      Divider(
-                        height: 16,
-                        thickness: 2,
-                      ),
-                      Text('Sample'),
-                      Row(
-                        children: [
-                          ElevatedButton(onPressed: () {  },
-                          child: Text('Cancel'),),
-                          ElevatedButton(onPressed: () {  },
-                            child: Text('Save'),),
-                        ],
-                      ),
-                    ],
-                  );
-                });
-              },
-              child: Text('Show Dialog'),
-            ),
-            // textfield
-            SizedBox(height: 24,),
-            Padding(
-              padding: EdgeInsets.all(16),
-              child: TextField(
-                maxLength: 50,
-                onChanged:(String?value){
-                  print(value);
-                },
-                //controller: TextEditingController(),
-                maxLines: 1,
-                keyboardType: TextInputType.phone,
-                decoration: InputDecoration(
-                  hintText: 'Phone',
-                  hintStyle: TextStyle(
-                      fontWeight: FontWeight.w400 ,
-                      color: Colors.grey.shade400,
-                  ),
-                  labelText: 'Phone Number',
-                  prefixIcon: Icon(Icons.phone),
-                  suffixIcon: Icon(Icons.person),
-                  fillColor: Colors.white24,
-                  filled: true,
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.green,width: 2),
-                  )
-                ),
-
-
-              ),
-            ),
-
+            Text('Sadman'),
+            Text('Hafiz'),
           ],
         ),
       ),
+      // Navigation Bar.........................................................
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: 1,
+
+        destinations: [
+          NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+          NavigationDestination(icon: Icon(Icons.search), label: 'Search'),
+        ],
+      ),
+      //SingleChildScrollView...................................................
+   /* body: Scrollbar(child:SingleChildScrollView(
+      child: Column(
+        children: [
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+          Text('asdf'),
+        ],
+      ),
+    ) ,),*/
+    //ScrollBar.................................................................
+      body: Scrollbar(
+        thickness: 10,
+        radius: Radius.circular(10),
+        interactive: true,
+        child:ListView(
+          children: [
+            Text('first'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('sdfdsfd'),
+            Text('last'),
+          ],
+        )
+
+        ,),
     );
   }
 }
+
 
