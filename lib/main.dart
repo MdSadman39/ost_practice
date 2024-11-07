@@ -25,7 +25,8 @@ class Home extends StatelessWidget {
     'Shaon',
     'Karim',
     'Rahim',
-    'Salam'
+    'Salam',
+    'Kalam'
   ];
 
   @override
@@ -108,7 +109,7 @@ class Home extends StatelessWidget {
            Text('Sadman'),
            Text('Sadman'),
            Text('Sadman'),
-           
+
          ],
        ),
      ),*/
@@ -171,7 +172,7 @@ class Home extends StatelessWidget {
             Text('Sadman'),
             Text('Sadman'),
             Text('Sadman'),
-        
+
           ],
         ),
       ),*/
