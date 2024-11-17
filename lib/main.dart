@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// Gridview, ListTile, Form, GlobalKey, Key
 
 void main() {
   runApp(HelloWorldApp());
@@ -9,7 +10,7 @@ class HelloWorldApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       title: 'Hello World App',
       home: Home(),
     );
@@ -19,181 +20,136 @@ class HelloWorldApp extends StatelessWidget {
 class Home extends StatelessWidget {
   Home({super.key});
 
-  List<String> friendlist = [
-    'Sadman',
-    'Hafiz',
-    'Shaon',
-    'Karim',
-    'Rahim',
-    'Salam',
-    'Kalam'
+  List<String> friendList = [
+    'Iram',
+    'Shabbin',
+    'Rakib',
+    'Hasan',
+    'Roy',
+    'Niloy',
+    'Niloy',
+    'Niloy',
+    'Niloy',
+    'Niloy',
+    'Niloy',
+    'Niloy',
+    'Niloy',
   ];
+  TextEditingController _emailTEController = TextEditingController();
+  TextEditingController _passwordTEController = TextEditingController();
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //Appbar..................................................................
       appBar: AppBar(
         title: Text('Home'),
-        centerTitle: true,
         backgroundColor: Colors.green,
-        actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
-          // IconButton(onPressed: (){}, icon: Icon(Icons.delete)),
-        ],
       ),
-      //drawer..................................................................
-      drawer: const Drawer(
-        backgroundColor: Colors.white54,
-        child: Column(
-          children: [
-            Text('jvkdfvnjkfc'),
-          ],
+      // body: ListView.builder(
+      //   itemCount: friendList.length,
+      //   itemBuilder: (context, index) {
+      //     return ListTile(
+      //       title: Text(friendList[index]),
+      //       subtitle: Text('Friend no $index'),
+      //       trailing: Icon(Icons.arrow_forward),
+      //       leading: CircleAvatar(
+      //         child: Icon(Icons.person),
+      //       ),
+      //       onTap: () {
+      //         print('on tap $index');
+      //       },
+      //       onLongPress: () {
+      //         print('on long press $index');
+      //       },
+      //       // tileColor: Colors.white10,
+      //       contentPadding: EdgeInsets.symmetric(
+      //         horizontal: 24,
+      //         vertical: 4
+      //       ),
+      //       // enabled: false,
+      //       dense: false, // TODO: need to explain
+      //       titleTextStyle: TextStyle(
+      //         fontSize: 24,
+      //         color: Colors.pink
+      //       ),
+      //       subtitleTextStyle: TextStyle(
+      //         fontSize: 12,
+      //         color: Colors.blue
+      //       ),
+      //       // selected: true,
+      //       // selectedColor: Colors.pink,
+      //     );
+      //   },
+      // ),
+      // body: GridView(
+      //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      //     crossAxisCount: 2,
+      //     mainAxisSpacing: 12,
+      //     crossAxisSpacing: 8
+      //   ),
+      //   children: [
+      //     Text('dsfdf'),
+      //     Text('dsfdf'),
+      //     Text('dsfdf'),
+      //     Text('dsfdf'),
+      //   ],
+      // ),
+      // body: GridView.builder(
+      //     gridDelegate:
+      //         SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+      //     itemCount: friendList.length,
+      //     itemBuilder: (context, index) {
+      //       return Center(child: Text(friendList[index]));
+      //     },
+      // ),
+      body: Padding(
+        key: Key('my-padding-key'),
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                controller: _emailTEController,
+                decoration: InputDecoration(hintText: 'Email'),
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Enter your email';
+                  }
+                  return null;
+                },
+              ),
+              TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                controller: _passwordTEController,
+                decoration: InputDecoration(hintText: 'Password'),
+                validator: (String? value) {
+                  if (value?.isEmpty ?? true) {
+                    return 'Enter your password';
+                  }
+                  return null;
+                },
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  // String email = _emailTEController.text;
+                  // String password = _passwordTEController.text;
+                  // if (email.isNotEmpty && password.isNotEmpty) {
+                  //   print('Login success');
+                  // } else {
+                  //   print('Login failed. Missing data');
+                  // }
+                  if (_formKey.currentState!.validate()) {
+                    print('Login success');
+                  }
+                },
+                child: Text('Tap'),
+              )
+            ],
+          ),
         ),
-      ),
-      //Navigation Bar..........................................................
-      bottomNavigationBar: NavigationBar(selectedIndex: 1, destinations: [
-        NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-        NavigationDestination(icon: Icon(Icons.search), label: 'Search'),
-      ]),
-      // SingleChildScrollView...................................................
-      /*body: SingleChildScrollView(
-       child: Column(
-         children: [
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-           Text('Sadman'),
-
-         ],
-       ),
-     ),*/
-      //ListView................................................................
-      /*body: Scrollbar(
-        thickness: 10,
-        radius: Radius.circular(10),
-        interactive: true,
-        child: ListView(
-          scrollDirection: Axis.vertical,
-          reverse: false,
-          padding: EdgeInsets.symmetric(horizontal: 16,vertical: 10),
-          children: [
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-            Text('Sadman'),
-
-          ],
-        ),
-      ),*/
-      //ListView Builder........................................................
-      body: Scrollbar(
-        /*child: ListView.builder(
-          itemCount: 100,//100-1=99 => 0-99
-          padding: EdgeInsets.symmetric(vertical: 10,horizontal: 16),
-          itemBuilder:(context, index) {
-            return Text('item $index');
-          } ,
-
-        ),*/
-        child: ListView.builder(
-            itemCount: friendlist.length,
-            itemBuilder: (cintext, index) {
-              return Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Text(friendlist[index]),
-              );
-            }),
       ),
     );
   }
