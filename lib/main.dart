@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'App.dart';
+import 'package:ost_practice/app.dart';
 
 void main(){
-  runApp(const TodoApp());
+  runApp(const CrudApp());
 }
